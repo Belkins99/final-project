@@ -1,68 +1,50 @@
-// src/pages/dashboard/Dashboard.jsx
-import React from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
-import SupportGroup from '../../../pages/dashboard/components/SupportGroups';
-import Resources from '../../../pages/dashboard/components/Resources';
-import Schedule from '../../../pages/dashboard/components/Schedule';
-import GroupDetail from '../../../pages/dashboard/components/GroupDetail';
-import Profile from '../../../pages/dashboard/components/Profile';
+// // src/Dashboard.jsx
+// import React from 'react';
+// import { Link } from 'react-router-dom';
 
-const Dashboard = () => {
-  return (
-    <div className="flex h-screen">
-      <aside className="w-1/5 bg-gray-800 text-white flex flex-col">
-        <div className="p-4 flex flex-col items-center">
-          <h2 className="text-3xl font-bold mb-4">Dashboard</h2>
-          <nav className="flex-grow">
-            <ul className="space-y-2">
-              <li>
-                <Link to="/dashboard/profile" className="flex items-center p-2 hover:bg-gray-700 rounded">
-                  <span className="material-icons-outlined">person</span>
-                  <span className="ml-2">Profile</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/dashboard/supportgroup" className="flex items-center p-2 hover:bg-gray-700 rounded">
-                  <span className="material-icons-outlined">group</span>
-                  <span className="ml-2">Support Group</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/dashboard/resources" className="flex items-center p-2 hover:bg-gray-700 rounded">
-                  <span className="material-icons-outlined">book</span>
-                  <span className="ml-2">Resources</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/dashboard/schedule" className="flex items-center p-2 hover:bg-gray-700 rounded">
-                  <span className="material-icons-outlined">schedule</span>
-                  <span className="ml-2">Schedule</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/dashboard/groupdetail" className="flex items-center p-2 hover:bg-gray-700 rounded">
-                  <span className="material-icons-outlined">info</span>
-                  <span className="ml-2">Group Detail</span>
-                </Link>
-              </li>
-            </ul>
-          </nav>
-          <button onClick={() => alert('Logging out...')} className="mt-4 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded w-full">
-            Logout
-          </button>
-        </div>
-      </aside>
-      <main className="w-4/5 p-4 overflow-auto">
-        <Routes>
-          <Route path="/dashboard/profile" element={<Profile />} />
-          <Route path="/dashboard/supportgroup" element={<SupportGroup />} />
-          <Route path="/dashboard/resources" element={<Resources />} />
-          <Route path="/dashboard/schedule" element={<Schedule />} />
-          <Route path="/dashboard/groupdetail" element={<GroupDetail />} />
-        </Routes>
-      </main>
-    </div>
-  );
-};
+// const Dashboard = () => {
+//     return (
+//         <div className="flex">
+//             <aside className="w-64 bg-gray-800 text-white h-screen">
+//                 <div className="p-4">
+//                     <h1 className="text-xl font-bold">Mental Health App</h1>
+//                 </div>
+//                 <nav className="mt-6">
+//                     <ul>
+//                         <li className="hover:bg-gray-700">
+//                             <Link to="/support-group" className="block p-4">Support Group</Link>
+//                         </li>
+//                         <li className="hover:bg-gray-700">
+//                             <Link to="/resources" className="block p-4">Resources</Link>
+//                         </li>
+//                         <li className="hover:bg-gray-700">
+//                             <Link to="/profile" className="block p-4">Profile</Link>
+//                         </li>
+//                         <li className="hover:bg-gray-700">
+//                             <Link to="/logout" className="block p-4">Logout</Link>
+//                         </li>
+//                         <li className="hover:bg-gray-700">
+//                             <Link to="/schedule" className="block p-4">Schedule</Link>
+//                         </li>
+//                         <li className="hover:bg-gray-700">
+//                             <Link to="/overview" className="block p-4">Overview</Link>
+//                         </li>
+//                         <li className="hover:bg-gray-700">
+//                             <Link to="/group-detail" className="block p-4">Group Detail</Link>
+//                         </li>
+//                     </ul>
+//                 </nav>
+//             </aside>
 
-export default Dashboard;
+//             <main className="flex-1 p-6 bg-gray-100">
+//                 <h2 className="text-2xl font-semibold">Dashboard Overview</h2>
+//                 {/* Add your main dashboard content here */}
+//                 <div className="mt-4">
+//                     <p>Welcome to your mental health dashboard! Here you can track your progress, join support groups, and access resources.</p>
+//                 </div>
+//             </main>
+//         </div>
+//     );
+// };
+
+// export default Dashboard;

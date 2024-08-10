@@ -3,7 +3,7 @@ import React from 'react';
 
 const Profile = () => {
   return (
-    <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+    <div id='2' className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
       <div className="flex items-center space-x-4">
         <img
           className="w-24 h-24 rounded-full object-cover"

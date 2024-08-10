@@ -1,20 +1,21 @@
-import React from 'react'
-import Dashboard from './components/dashboard'
-import Profile from './components/Profile'
+// src/App.jsx
+import React from 'react';
+import Sidebar from '../../components/sidebar'
+import Header from '../../components/header'
+import { Outlet } from 'react-router-dom'
 
-const index = () => {
+const Dashboard = () => {
   return (
     <div>
-        <Dashboard />
-        <Profile />
+    <div className='flex'>
+        <Sidebar />
+        <div className='w-full ml-16 md:ml-56'>
+            <Header />
+            <Outlet />
+        </div>
     </div>
-    
-  )
-    
- 
+</div>
+  );
+};
 
-
-  
-}
-
-export default index
+export default Dashboard;

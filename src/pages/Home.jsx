@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import heroImage1 from '../assets/images/images.jpg';
 import heroImage2 from '../assets/images/human.jpg';
 import heroImage3 from '../assets/images/dug.jpg';
-import Header from '../components/Header';
 import Footer from '../components/footer';
+import Navbar from '../components/Navbar';
 
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-gray-100">
-      <Header />
+      <Navbar />
       <main className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div>

@@ -1,23 +1,26 @@
-// src/components/Header.jsx
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { GoBell } from "react-icons/go"
 
 const Header = () => {
   return (
-    <header className="bg-slate-950 p-4 text-white">
-      <nav className="flex justify-between">
-        <h1 className="text-2xl font-bold">Mental Health App</h1>
-        <div>
-          <Link to="/" className="mr-4">Home</Link>
-          <Link to="/resources" className="mr-4">Resources</Link>
-          <Link to="/support-groups" className="mr-4">Support Groups</Link>
-          <Link to="/schedule" className="mr-4">Schedule</Link>
-          <Link to="/login" className="mr-4 border rounded-full bg-white text-black p-2">Login</Link>
-          
+    <div className="flex justify-between items-center p-4">
+      <div>
+        <h1 className="text-xs">Welcome Back!</h1>
+        <p className="text-xl font-semibold">Mabel</p>
+      </div>
+      <div className="flex items-center space-x-5">
+        <div className="hidden md:flex">
+          <input type="text" placeholder='search...' className="bg-indigo-100/30 px-4 py-2 rounded:lg focus:outline-0 focus:ring-2 focus:ring-indigo-600"/>
         </div>
-      </nav>
-    </header>
-  );
-};
+        <div className="flex items-center space-x-5">
+          <button className="relative text-2xl text-gray-600">
+            <GoBell size={32}/>
+            <span className="absolute top-0 right-0 -mt-1 -mr-1 flex justify-center items-center bg-indigo-600 text-white font-semibold text-[10px] w-5 h-5 rounded-full border-2 border-white">9</span>
+            <img className="w-8 g-8 rounded-full border-4 border-indigo-400" src="" alt="" />
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
 
-export default Header;
+export default Header
