@@ -1,7 +1,8 @@
 // src/App.js
-import Header from '../../components/header';
+
 import { Outlet } from 'react-router-dom';
 import AdminSidebar from '../../components/sidebar';
+import Header from '../../components/header';
 
 const AdminDashboard = () => {
   return (
@@ -9,7 +10,7 @@ const AdminDashboard = () => {
     <div className='flex'>
         <AdminSidebar />
         <div className='w-full ml-16 md:ml-56'>
-            <Header />
+            <Header/>
             <Outlet />
         </div>
     </div>
