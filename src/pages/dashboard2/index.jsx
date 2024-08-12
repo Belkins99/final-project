@@ -1,6 +1,6 @@
 // src/App.js
-import Header from '../../components/header'
-import { Outlet } from 'react-router-dom'
+import Header from '../../components/header';
+import { Outlet } from 'react-router-dom';
 import AdminSidebar from '../../components/sidebar';
 
 const AdminDashboard = () => {
