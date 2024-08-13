@@ -1,4 +1,4 @@
-// src/App.js
+
 import Header from '../../components/header';
 import { Outlet } from 'react-router-dom';
 import UserSidebar from '../../components/sidebar2';
