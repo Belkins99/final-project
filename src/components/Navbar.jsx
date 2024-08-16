@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,6 +10,14 @@ const Navbar = () => {
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false); // Close the menu if it's open (useful for mobile)
+    }
   };
 
   return (
@@ -61,27 +68,25 @@ const Navbar = () => {
             </button>
             {isDropdownOpen && (
               <div className="absolute left-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg z-20">
-                <Link
-                  to="/about"
-                  className="block px-4 py-2 hover:bg-teal-300 hover:text-white"
-                  onClick={() => setIsMenuOpen(false)}
+                <button
+                  onClick={() => scrollToSection('about')}
+                  className="block w-full text-left px-4 py-2 hover:bg-teal-300 hover:text-white"
                 >
                   About
-                </Link>
-                <Link
-                  to="/services"
-                  className="block px-4 py-2 hover:bg-teal-300 hover:text-white"
-                  onClick={() => setIsMenuOpen(false)}
+                </button>
+                <button
+                  onClick={() => scrollToSection('services')}
+                  className="block w-full text-left px-4 py-2 hover:bg-teal-300 hover:text-white"
                 >
                   Services
-                </Link>
+                </button>
               </div>
             )}
           </div>
 
-          <Link to="/resources" className="mr-6 hover:text-teal-300">Resources</Link>
-          <Link to="/support-groups" className="mr-6 hover:text-teal-300">Support Groups</Link>
-          <Link to="/schedule" className="mr-6 hover:text-teal-300">Schedule</Link>
+          <button onClick={() => scrollToSection('resources')} className="mr-6 hover:text-teal-300">Resources</button>
+          <button onClick={() => scrollToSection('support-groups')} className="mr-6 hover:text-teal-300">Support Groups</button>
+          <button onClick={() => scrollToSection('schedule')} className="mr-6 hover:text-teal-300">Schedule</button>
           <Link to="/login" className="border bg-slate-900 text-white p-2 hover:bg-slate-700">Login</Link>
         </div>
       </nav>
