@@ -1,23 +1,31 @@
 import React, { useState } from 'react';
-import { login } from '../../services/authService.js';
 import { FcGoogle } from 'react-icons/fc';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import bgImage from '../../assets/images/bg-image.jpeg'; // Adjust path as needed
+import { useNavigate } from 'react-router-dom'; 
+import bgImage from '../../assets/images/bg-image.jpeg'; 
+import { useForm } from 'react-hook-form';
+import { login } from '../../services/authService.js';
+
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
+  const [error, setError] = useState(null);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ reValidateMode: "onBlur", mode: "all" });
+
+  const handleLogin = async (data) => {
     try {
-      const data = await login(email, password);
-      localStorage.setItem('token', data.token);
-      navigate('/dashboard'); // Redirect to dashboard on successful login
+      const res = await login(
+         data.email, 
+         data.password
+      );
+      addToLocalStorage(res.data.accessToken, res.data.user); 
+      navigate('/dashboard'); 
     } catch (error) {
-      setError(error.message);
+      setError(error.message || "An unexpected error occurred");
     }
   };
 
@@ -28,32 +36,31 @@ const LoginPage = () => {
     >
       <div className="w-full max-w-md p-8 bg-gray-400 bg-opacity-30 shadow-lg rounded-lg">
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-900">Login</h2>
-        {error && <p className="text-red-600 mb-4 text-center">{error}</p>}
-        <form onSubmit={handleLogin}>
+      
+        <form onSubmit={handleSubmit(handleLogin)}>
           <div className="mb-4">
             <label className="block text-gray-800" htmlFor="email">Email</label>
             <input
               id="email"
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
               placeholder="Enter your email"
-              required
+              {...register("email", { required: "Email is required" })} 
             />
+            {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
           </div>
           <div className="mb-6">
             <label className="block text-gray-800 font-semibold" htmlFor="password">Password</label>
             <input
               id="password"
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
               placeholder="Enter your password"
-              required
+              {...register("password", { required: "Password is required" })}
             />
+            {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
           </div>
+          {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
           <button
             type="submit"
             className="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
@@ -64,7 +71,7 @@ const LoginPage = () => {
             <span className="text-gray-700">Don't have an account?</span> 
             <span
               className="text-blue-600 font-semibold cursor-pointer ml-1"
-              onClick={() => navigate('/register')} // Redirect to register page
+              onClick={() => navigate('/register')} 
             >
               Register
             </span>

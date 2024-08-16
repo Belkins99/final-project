@@ -1,51 +1,53 @@
 import React, { useState } from 'react';
-import { register } from '../../services/authService.js';
+import { register as apiRegister } from '../../services/authService.js';
 import { FaLock, FaUser } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { CiLocationOn } from 'react-icons/ci';
 import bgImage from '../../assets/images/bg-image.jpeg'; // Adjust path as needed
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
 
 const RegisterPage = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [location, setLocation] = useState('');
-  const [role, setRole] = useState('user');
-  const [termsAndConditions, setTermsAndConditions] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
+  const [error, setError] =useState()
+  const [success, setSucess] = useState()
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    if (password !== confirmPassword) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ reValidateMode: "onBlur", mode: "all" });
+
+
+  const handleRegister = async (data) => {
+    console.log(data);
+    if (data.password !== data.confirmPassword) {
       setError("Passwords do not match");
       return;
     }
-    if (!termsAndConditions) {
-      setError("You must agree to the terms and conditions");
-      return;
-    }
+    
     try {
-      await register({
-        firstName,
-        lastName,
-        email,
-        password,
-        role,
-        phoneNumber,
-        location,
-        termsAndConditions,
+      
+      const res= await apiRegister({
+        firstName:data.firstName,
+        lastName:data.lastName,
+        email:data.email,
+        password:data.password,
+        role:data.role,
+        phoneNumber:data.phoneNumber,
+        location:data.location,
+      
       });
-      setSuccess('Registration successful! Redirecting to login...');
-      setTimeout(() => {
-        history.push('/login'); // Redirect to login page after successful registration
-      }, 3000);
+      // setSuccess('Registration successful! Redirecting to login...');
+      navigate('/login')
+      console.log(res.message)
+
     } catch (error) {
       setError(error.message);
     }
+    
   };
 
   return (
@@ -54,16 +56,15 @@ const RegisterPage = () => {
         <h2 className="text-2xl font-bold mb-6 text-center text-slate-900">Register</h2>
         {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
         {success && <p className="text-green-500 mb-4 text-center">{success}</p>}
-        <form onSubmit={handleRegister} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <form onSubmit={handleSubmit(handleRegister)} className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="relative mb-4">
             <input
               id="firstName"
               type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              
               className="w-full px-10 py-2 border border-gray-300 rounded-md"
               placeholder="First Name"
-              required
+              {...register("firstName", { required: "FirstName is required" })}
             />
             <FaUser className="absolute left-3 top-2.5 text-gray-400" />
           </div>
@@ -71,11 +72,10 @@ const RegisterPage = () => {
             <input
               id="lastName"
               type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              
               className="w-full px-10 py-2 border border-gray-300 rounded-md"
               placeholder="Last Name"
-              required
+              {...register("lastName", { required: "LastName is required" })}
             />
             <FaUser className="absolute left-3 top-2.5 text-gray-400" />
           </div>
@@ -83,11 +83,10 @@ const RegisterPage = () => {
             <input
               id="email"
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              
               className="w-full px-10 py-2 border border-gray-300 rounded-md"
               placeholder="Email"
-              required
+              {...register("email", { required: "Email is required" })}
             />
             <MdEmail className="absolute left-3 top-2.5 text-gray-400" />
           </div>
@@ -95,11 +94,10 @@ const RegisterPage = () => {
             <input
               id="password"
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+             
               className="w-full px-10 py-2 border border-gray-300 rounded-md"
               placeholder="Password"
-              required
+              {...register("password", { required: "Password is required" })}
             />
             <FaLock className="absolute left-3 top-2.5 text-gray-400" />
           </div>
@@ -107,11 +105,10 @@ const RegisterPage = () => {
             <input
               id="confirmPassword"
               type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+
               className="w-full px-10 py-2 border border-gray-300 rounded-md"
               placeholder="Confirm Password"
-              required
+              {...register("confirmPassword", { required: "Confirm Password is required" })}
             />
             <FaLock className="absolute left-3 top-2.5 text-gray-400" />
           </div>
@@ -119,10 +116,10 @@ const RegisterPage = () => {
             <input
               id="phoneNumber"
               type="text"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+             
               className="w-full px-10 py-2 border border-gray-300 rounded-md"
               placeholder="Phone Number"
+              {...register("phoneNumber", { required: "Phone Number is required" })}
             />
             <CiLocationOn className="absolute left-3 top-2.5 text-gray-400" />
           </div>
@@ -130,10 +127,10 @@ const RegisterPage = () => {
             <input
               id="location"
               type="text"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
+             
               className="w-full px-10 py-2 border border-gray-300 rounded-md"
               placeholder="Location"
+              {...register("location", { required: "Location is required" })}
             />
             <CiLocationOn className="absolute left-3 top-2.5 text-gray-400" />
           </div>
@@ -141,10 +138,9 @@ const RegisterPage = () => {
             <label className="block text-gray-700" htmlFor="role">Role</label>
             <select
               id="role"
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
+              
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
-              required
+              {...register("role", { required: "Role is required" })}
             >
               <option value="user">User</option>
               <option value="professional">Professional</option>
@@ -155,10 +151,10 @@ const RegisterPage = () => {
             <input
               id="termsAndConditions"
               type="checkbox"
-              checked={termsAndConditions}
-              onChange={(e) => setTermsAndConditions(e.target.checked)}
+              
+             
               className="mr-2"
-              required
+              {...register("termsAndConditions", { required: "Terms And Conditions is required" })}
             />
             <label htmlFor="termsAndConditions" className="text-gray-700">I agree to the terms and conditions</label>
           </div>

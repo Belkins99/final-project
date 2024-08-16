@@ -3,22 +3,48 @@ import React, { useState } from 'react';
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState({
-    fullName: 'John Doe',
-    email: 'johndoe@example.com',
+    fullName: 'ANGEL OWUSU',
+    email: 'angelowusu@example.com',
     phone: '+123456789',
-    address: '123 Main St, Springfield, USA'
+    address: '123 Main St, Springfield, USA',
+    profileImage: 'https://via.placeholder.com/150',
   });
 
+  const [tempData, setTempData] = useState(profileData);
+
   const handleEditClick = () => {
+    if (isEditing) {
+      // Save logic (replace with actual save logic)
+      setProfileData(tempData);
+    }
     setIsEditing(!isEditing);
+  };
+
+  const handleCancelClick = () => {
+    setTempData(profileData);
+    setIsEditing(false);
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProfileData((prevData) => ({
+    setTempData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setTempData((prevData) => ({
+          ...prevData,
+          profileImage: reader.result,
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -26,12 +52,20 @@ const Profile = () => {
       <div className="flex items-center space-x-4">
         <img
           className="w-24 h-24 rounded-full object-cover"
-          src="https://via.placeholder.com/150"
+          src={tempData.profileImage}
           alt="Profile"
         />
+        {isEditing && (
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            className="mt-2"
+          />
+        )}
         <div>
-          <h2 className="text-2xl font-bold text-gray-800">ANGEL OWUSU</h2>
-          <p className="text-gray-600">angelowusu@example.com</p>
+          <h2 className="text-2xl font-bold text-gray-800">{tempData.fullName}</h2>
+          <p className="text-gray-600">{tempData.email}</p>
         </div>
       </div>
       <div className="mt-8 space-y-4">
@@ -41,7 +75,7 @@ const Profile = () => {
             type="text"
             name="fullName"
             className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
-            value={profileData.fullName}
+            value={tempData.fullName}
             onChange={handleChange}
             readOnly={!isEditing}
           />
@@ -52,7 +86,7 @@ const Profile = () => {
             type="email"
             name="email"
             className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
-            value={profileData.email}
+            value={tempData.email}
             onChange={handleChange}
             readOnly={!isEditing}
           />
@@ -63,7 +97,7 @@ const Profile = () => {
             type="text"
             name="phone"
             className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
-            value={profileData.phone}
+            value={tempData.phone}
             onChange={handleChange}
             readOnly={!isEditing}
           />
@@ -74,17 +108,27 @@ const Profile = () => {
             name="address"
             className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
             rows="3"
-            value={profileData.address}
+            value={tempData.address}
             onChange={handleChange}
             readOnly={!isEditing}
           />
         </div>
-        <button
-          onClick={handleEditClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg"
-        >
-          {isEditing ? 'Save Changes' : 'Edit Profile'}
-        </button>
+        <div className="flex">
+          <button
+            onClick={handleEditClick}
+            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg"
+          >
+            {isEditing ? 'Save Changes' : 'Edit Profile'}
+          </button>
+          {isEditing && (
+            <button
+              onClick={handleCancelClick}
+              className="ml-4 bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg"
+            >
+              Cancel
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -18,6 +18,14 @@ import ManageReports from './pages/dashboard2/components/Reports';
 import AdminDashboard from './pages/dashboard2';
 import UserDashboard from './pages/dashboard';
 import Settings from './pages/dashboard2/components/settings';
+import ProfessionalDashboard from './pages/dashboard3';
+import ProfessionalProfile from './pages/dashboard3/components/profProfile';
+import ProfessionalResources from './pages/dashboard3/components/Resources';
+import Appointments from './pages/dashboard3/components/Appointments';
+import Clients from './pages/dashboard3/components/Clients';
+import ProfessionalSettings from './pages/dashboard3/components/Settings';
+import Professionals from './pages/professionals'; 
+import ProfessionalProfilePage from './pages/professionalProfile'; 
 
 const router = createBrowserRouter([
   {
@@ -30,23 +38,39 @@ const router = createBrowserRouter([
       { path: "schedule", element: <Schedule /> },
       { path: "supportgroup", element: <SupportGroups /> },
       { path: "groupdetail", element: <GroupDetail /> },
-     
-
     ]
   },
   {
     path: "/admin-dashboard",
     element: <AdminDashboard/>,
     children: [
-  
       { path: "manage-users", element: <ManageUsers/> },
       { path: "manage-resources", element: <ManageResources/> },
       { path: "manage-supportgroups", element: <ManageSupportGroups/> },
       { path: "schedule-management", element: <ManageSchedule/> },
       { path: "reports", element: <ManageReports/>},
       { path: "settings", element: <Settings/>}
-
     ]
+  },
+  {
+    path: "/prof-dashboard",
+    element: <ProfessionalDashboard/>,
+    children: [
+      { path: "prof-profile", element: <ProfessionalProfile/> },
+      { path: "resources", element: <ProfessionalResources/>},
+      { path: "appointments", element: <Appointments/>},
+      { path: "clients", element: <Clients/> },
+      { path: "settings", element: <ProfessionalSettings/>}
+    ]
+  },
+  
+  {
+    path: "/professionals",
+    element: <Professionals />, // Displays the list of professionals
+  },
+  {
+    path: "/professional/:id", // Dynamic route for each professional's profile
+    element: <ProfessionalProfilePage />, // Displays the profile of a selected professional
   },
   {
     path: "/",
