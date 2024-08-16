@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +17,7 @@ const Navbar = () => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false); // Close the menu if it's open (useful for mobile)
+      setIsMenuOpen(false); 
     }
   };
 
@@ -25,7 +26,7 @@ const Navbar = () => {
       <nav className="container mx-auto flex justify-between items-center py-4 px-6">
         <h1 className="text-2xl font-bold">SOLACE</h1>
         
-        {/* Hamburger Icon for Mobile */}
+      
         <div className="md:hidden" onClick={toggleMenu}>
           <svg
             className="w-6 h-6"
@@ -43,7 +44,7 @@ const Navbar = () => {
           </svg>
         </div>
         
-        {/* Navigation Links */}
+        
         <div className={`flex flex-col md:flex-row items-center md:space-x-6 ${isMenuOpen ? 'block' : 'hidden'} md:block`}>
           <div className="relative">
             <button

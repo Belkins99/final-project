@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Footer from '../components/Footer';
+import Footer from '../components/footer';
 import Navbar from '../components/Navbar';
-import Professionals from '../pages/Professionals';
+import Professionals from '../pages/professionals';
 import About from '../pages/About';
 import Services from '../pages/Services';
 import hosOne from '../assets/videos/hos.mp4';
