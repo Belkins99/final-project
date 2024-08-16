@@ -52,8 +52,8 @@ const RegisterPage = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-cover bg-center" style={{ backgroundImage: `url(${bgImage})` }}>
-      <div className="w-full max-w-4xl p-8 bg-white bg-opacity-70 shadow-md rounded-lg">
-        <h2 className="text-2xl font-bold mb-6 text-center text-slate-900">Register</h2>
+      <div className="w-full max-w-4xl p-8 bg-black bg-opacity-70 shadow-md rounded-lg">
+        <h2 className="text-2xl font-bold mb-6 text-center text-white">Register</h2>
         {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
         {success && <p className="text-green-500 mb-4 text-center">{success}</p>}
         <form onSubmit={handleSubmit(handleRegister)} className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -135,7 +135,7 @@ const RegisterPage = () => {
             <CiLocationOn className="absolute left-3 top-2.5 text-gray-400" />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700" htmlFor="role">Role</label>
+            <label className="block text-white" htmlFor="role">Role</label>
             <select
               id="role"
               
@@ -156,7 +156,7 @@ const RegisterPage = () => {
               className="mr-2"
               {...register("termsAndConditions", { required: "Terms And Conditions is required" })}
             />
-            <label htmlFor="termsAndConditions" className="text-gray-700">I agree to the terms and conditions</label>
+            <label htmlFor="termsAndConditions" className="text-white">I agree to the terms and conditions</label>
           </div>
           <button
             type="submit"
@@ -165,7 +165,7 @@ const RegisterPage = () => {
             Register
           </button>
           <div className="text-center mt-4 ml-28">
-            <span>Already have an account? <a href="/login" className="text-blue-600 hover:underline">Login</a></span>
+            <span className='text-gray-200'>Already have an account? <a href="/login" className="text-blue-600 hover:underline">Login</a></span>
           </div>
         </form>
       </div>
