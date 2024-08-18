@@ -10,15 +10,15 @@ const About = () => {
         <h1 className="text-4xl font-bold text-slate-950">ABOUT US</h1>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-8 text-2xl pt-5 pb-5">
+      <div className="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-8 text-[20px] pt-5 pb-5">
         <div className="md:w-1/2 text-center md:text-left">
-          <p className="text-slate-950 ">
+          <p className="text-slate-950">
             At SOLACE, our mission is to support mental health and well-being by connecting people with the resources and professionals they need.
           </p>
-          <p className="mt-4 text-teal-700 ">
+          <p className="mt-4 text-blue-700">
             Our platform offers a range of services, including access to mental health professionals, support groups, and resources tailored to meet your needs.
           </p>
-          <p className="mt-4 text-slate-950 ">
+          <p className="mt-4 text-slate-950">
             Join us in our journey to make mental health care accessible, effective, and compassionate. Together, we can build a community where everyone feels supported and empowered to thrive.
           </p>
         </div>

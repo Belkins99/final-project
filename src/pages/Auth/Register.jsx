@@ -144,7 +144,7 @@ const RegisterPage = () => {
             >
               <option value="user">User</option>
               <option value="professional">Professional</option>
-              <option value="admin">Admin</option>
+            
             </select>
           </div>
           <div className="mb-4 flex items-center">

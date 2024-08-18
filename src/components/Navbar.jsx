@@ -17,16 +17,17 @@ const Navbar = () => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false); 
+      setIsMenuOpen(false);
     }
   };
 
   return (
     <header className="bg-black bg-opacity-50 text-white fixed w-full z-10 top-0 left-0">
       <nav className="container mx-auto flex justify-between items-center py-4 px-6">
-        <h1 className="text-2xl font-bold">SOLACE</h1>
-        
-      
+        <Link to="/" className="text-2xl font-bold">
+          SOLACE
+        </Link>
+
         <div className="md:hidden" onClick={toggleMenu}>
           <svg
             className="w-6 h-6"
@@ -43,13 +44,16 @@ const Navbar = () => {
             />
           </svg>
         </div>
-        
-        
-        <div className={`flex flex-col md:flex-row items-center md:space-x-6 ${isMenuOpen ? 'block' : 'hidden'} md:block`}>
+
+        <div
+          className={`flex flex-col md:flex-row items-center md:space-x-6 ${
+            isMenuOpen ? 'block' : 'hidden'
+          } md:block`}
+        >
           <div className="relative">
             <button
               onClick={toggleDropdown}
-              className="flex items-center mr-6 hover:text-teal-300"
+              className="flex items-center mr-6 hover:text-blue-300"
             >
               Home
               <svg
@@ -71,24 +75,56 @@ const Navbar = () => {
               <div className="absolute left-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg z-20">
                 <button
                   onClick={() => scrollToSection('about')}
-                  className="block w-full text-left px-4 py-2 hover:bg-teal-300 hover:text-white"
+                  className="block w-full text-left px-4 py-2 hover:bg-blue-300 hover:text-white"
                 >
                   About
                 </button>
                 <button
                   onClick={() => scrollToSection('services')}
-                  className="block w-full text-left px-4 py-2 hover:bg-teal-300 hover:text-white"
+                  className="block w-full text-left px-4 py-2 hover:bg-blue-300 hover:text-white"
                 >
                   Services
+                </button>
+                <button
+                  onClick={() => scrollToSection('testimonials')}
+                  className="block w-full text-left px-4 py-2 hover:bg-blue-300 hover:text-white"
+                >
+                  Testimonials
+                </button>
+                <button
+                  onClick={() => scrollToSection('upcoming-events')}
+                  className="block w-full text-left px-4 py-2 hover:bg-blue-300 hover:text-white"
+                >
+                  Upcoming Events
                 </button>
               </div>
             )}
           </div>
 
-          <button onClick={() => scrollToSection('resources')} className="mr-6 hover:text-teal-300">Resources</button>
-          <button onClick={() => scrollToSection('support-groups')} className="mr-6 hover:text-teal-300">Support Groups</button>
-          <button onClick={() => scrollToSection('schedule')} className="mr-6 hover:text-teal-300">Schedule</button>
-          <Link to="/login" className="border bg-slate-900 text-white p-2 hover:bg-slate-700">Login</Link>
+          <button
+            onClick={() => scrollToSection('resources')}
+            className="mr-6 hover:text-blue-300"
+          >
+            Resources
+          </button>
+
+          <button
+            onClick={() => scrollToSection('support-groups')}
+            className="mr-6 hover:text-blue-300"
+          >
+            Support Groups
+          </button>
+
+          <button
+            onClick={() => scrollToSection('newsletter')}
+            className="mr-6 hover:text-blue-300"
+          >
+            Newsletter
+          </button>
+
+          <Link to="/login" className="border bg-blue-950 text-white p-2 hover:bg-blue-600">
+            Login
+          </Link>
         </div>
       </nav>
     </header>

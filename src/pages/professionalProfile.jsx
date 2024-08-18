@@ -1,13 +1,16 @@
-// src/pages/ProfessionalProfile.jsx
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import doctorOne from '../assets/images/doctor.jpg'
+import doctorTwo from '../assets/images/doctor1.jpg'
+import doctorThree from '../assets/images/doctor2.jpg'
+import doctorFour from '../assets/images/doctor3.jpg'
 
 const professionalsData = [
   {
     id: 1,
     name: 'Dr. John Doe',
     specialty: 'Psychologist',
-    image: 'https://via.placeholder.com/150',
+    image: doctorOne,
     bio: 'Dr. John Doe is a licensed psychologist with over 15 years of experience in cognitive behavioral therapy...',
     certifications: ['PhD in Psychology', 'Licensed Psychologist'],
     contact: 'johndoe@example.com',
@@ -17,13 +20,32 @@ const professionalsData = [
     id: 2,
     name: 'Jane Smith',
     specialty: 'Therapist',
-    image: 'https://via.placeholder.com/150',
+    image: doctorTwo,
     bio: 'Jane Smith is a therapist specializing in anxiety and depression...',
     certifications: ['Masters in Counseling', 'Licensed Therapist'],
     contact: 'janesmith@example.com',
     availableTimes: ['Mon-Fri: 8am-4pm']
   },
-  // Add more professionals as needed
+  {
+    id: 3,
+    name: 'Aaron Smith',
+    specialty: 'Clinical Social Worker',
+    image: doctorThree, 
+    bio: 'Provides support for mental health issues, including anxiety and depression.',
+    certifications: ['Masters in Social Work', 'Licensed Clinical Social Worker'],
+    contact: 'aaronsmith@example.com',
+    availableTimes: ['Mon-Fri: 9am-6pm']
+  },
+  {
+    id: 4,
+    name: 'Mabel Aikins',
+    specialty: 'Addiction Counselor',
+    image: doctorFour,
+    bio: 'Focuses on helping individuals overcome substance abuse and dependency.',
+    certifications: ['Certified Addiction Counselor', 'Licensed Counselor'],
+    contact: 'mabelaikins@example.com',
+    availableTimes: ['Mon-Fri: 10am-4pm']
+  },
 ];
 
 const ProfessionalProfilePage = () => {

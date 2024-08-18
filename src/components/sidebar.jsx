@@ -8,16 +8,14 @@ import { CiSettings } from 'react-icons/ci';
 
 const AdminSidebar = () => {
   const [activeLink, setActiveLink] = useState(0);
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
   const handleLinkClick = (index) => {
     setActiveLink(index);
   };
 
   const handleLogout = () => {
-    // Add your logout logic here
     console.log('User logged out');
-    // Redirect to the home page
     navigate('/');
   };
 
@@ -32,31 +30,29 @@ const AdminSidebar = () => {
   ];
 
   return (
-    <div className='w-16 md:w-52 fixed left-0 top-0 z-10 h-screen border-r pt-8 px-4 bg-white'>
+    <div className='w-16 md:w-52 fixed left-0 top-0 z-10 h-screen border-r pt-8 px-4 bg-indigo-700'>
       <div className='mb-8'>
-        <h1 className='hidden md:flex font-bold'>SOLACE</h1>
-        <h1 className='flex md:hidden'>logo2</h1>
+        <h1 className='hidden md:flex font-bold text-white'>SOLACE</h1>
+        <h1 className='flex md:hidden text-white'>logo2</h1>
       </div>
 
-      <nav className='mb-16'> {/* Added margin-bottom here */}
+      <nav className='mb-16'>
         <ul className='mt-6 space-y-4'>
-          {
-            SIDEBAR_LINKS.map((link, index) => (
-              <li key={index} className={`font-medium rounded-md py-2 px-5 hover:bg-gray-100 hover:text-indigo-500 ${activeLink === index ? "bg-indigo-100 text-indigo-500" : ""}`}>
-                <Link to={link.path} className='flex justify-center md:justify-start items-center md:space-x-5' onClick={() => handleLinkClick(index)}>
-                  <span>{React.createElement(link.icon)}</span>
-                  <span className='text-sm text-gray-500 hidden md:flex'>{link.name}</span>
-                </Link>
-              </li>
-            ))
-          }
+          {SIDEBAR_LINKS.map((link, index) => (
+            <li key={index} className={`font-medium rounded-md py-2 px-5 hover:bg-indigo-600 hover:text-white ${activeLink === index ? "bg-indigo-600 text-white" : "text-indigo-100"}`}>
+              <Link to={link.path} className='flex justify-center md:justify-start items-center md:space-x-5' onClick={() => handleLinkClick(index)}>
+                <span>{React.createElement(link.icon)}</span>
+                <span className='text-sm hidden md:flex'>{link.name}</span>
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
 
       <div className='w-full absolute bottom-16 left-0 px-4 py-2'>
         <button
           onClick={handleLogout}
-          className={`font-medium rounded-md py-2 px-5 flex justify-center items-center space-x-2 text-gray-500 hover:bg-gray-100 hover:text-indigo-500 ${activeLink === SIDEBAR_LINKS.length - 1 ? "bg-indigo-100 text-indigo-500" : ""}`}
+          className='font-medium rounded-md py-2 px-5 flex justify-center items-center space-x-2 text-indigo-100 hover:bg-indigo-600 hover:text-white'
         >
           <CgLogOut />
           <span className='text-sm hidden md:flex'>Logout</span>
@@ -64,7 +60,7 @@ const AdminSidebar = () => {
       </div>
 
       <div className='w-full absolute bottom-5 left-0 px-4 py-2 cursor-pointer text-center'>
-        <p className='flex items-center space-x-2 text-xs text-white py-2 px-5 bg-gradient-to-r from-indigo-500 to-violet-600 rounded-full'>
+        <p className='flex items-center space-x-2 text-xs text-white py-2 px-5 bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-full'>
           <span>?</span> <span className='hidden md:flex'>Need Help</span>
         </p>
       </div>

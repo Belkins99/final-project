@@ -4,7 +4,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-teal-900 text-white py-8">
+    <footer className="bg-indigo-900 text-white py-8">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -29,20 +29,20 @@ const Footer = () => {
           <div>
             <h3 className="font-bold text-lg mb-2">Follow Us</h3>
             <div className="flex space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-400">
                 <FaFacebook size={24} />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-400">
                 <FaTwitter size={24} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-400">
                 <FaInstagram size={24} />
               </a>
             </div>
           </div>
         </div>
         <div className="text-center mt-8">
-          <p className="text-teal-400">&copy; 2024 MentalHealth.com. All rights reserved.</p>
+          <p className="text-indigo-400">&copy; 2024 MentalHealth.com. All rights reserved.</p>
         </div>
       </div>
     </footer>

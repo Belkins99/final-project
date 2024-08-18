@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { GoBell } from 'react-icons/go';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [notifications, setNotifications] = useState([
@@ -58,11 +59,13 @@ const Header = () => {
             </div>
           )}
 
-          <img
-            className="w-8 h-8 rounded-full border-4 border-indigo-400"
-            src="" // You can add the user's avatar image URL here
-            alt="Profile"
-          />
+          <Link to="/user-dashboard/profile">
+            <img
+              className="w-8 h-8 rounded-full border-4 border-indigo-400"
+              src="" // Add the user's avatar image URL here
+              alt="Profile"
+            />
+          </Link>
         </div>
       </div>
     </div>

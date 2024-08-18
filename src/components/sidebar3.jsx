@@ -18,10 +18,10 @@ const ProfessionalSidebar = () => {
   ];
 
   return (
-    <div className='w-16 md:w-52 fixed left-0 top-0 z-10 h-screen border-r pt-8 px-4 bg-blue-800'>
+    <div className='w-16 md:w-52 fixed left-0 top-0 z-10 h-screen border-r pt-8 px-4 bg-[#YourSidebarBackgroundColor]'>
       <div className='mb-8'>
-        <h1 className='hidden md:flex font-bold text-white'>PRO DASH</h1>
-        <h1 className='flex md:hidden text-white'>P</h1>
+        <h1 className='hidden md:flex font-bold text-[#YourTextColor]'>PRO DASH</h1>
+        <h1 className='flex md:hidden text-[#YourTextColor]'>P</h1>
       </div>
 
       <nav>
@@ -29,7 +29,7 @@ const ProfessionalSidebar = () => {
           {SIDEBAR_LINKS.map((link, index) => (
             <li
               key={index}
-              className={`font-medium rounded-md py-2 px-5 hover:bg-blue-600 hover:text-white ${activeLink === index ? "bg-blue-600 text-white" : "text-gray-400"}`}
+              className={`font-medium rounded-md py-2 px-5 hover:bg-[#YourHoverBackgroundColor] hover:text-[#YourHoverTextColor] ${activeLink === index ? "bg-[#YourActiveBackgroundColor] text-[#YourActiveTextColor]" : "text-[#YourInactiveTextColor]"}`}
             >
               <Link to={link.path} className='flex justify-center md:justify-start items-center md:space-x-5' onClick={() => handleLinkClick(index)}>
                 <span>{React.createElement(link.icon)}</span>
@@ -41,7 +41,7 @@ const ProfessionalSidebar = () => {
       </nav>
 
       <div className='w-full absolute bottom-5 left-0 px-4 py-2 cursor-pointer text-center'>
-        <p className='flex items-center space-x-2 text-xs text-white py-2 px-5 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full'>
+        <p className='flex items-center space-x-2 text-xs text-[#YourHelpTextColor] py-2 px-5 bg-gradient-to-r from-[#YourHelpGradientStartColor] to-[#YourHelpGradientEndColor] rounded-full'>
           <span>?</span> <span className='hidden md:flex'>Need Help</span>
         </p>
       </div>

@@ -26,6 +26,7 @@ import Clients from './pages/dashboard3/components/Clients';
 import ProfessionalSettings from './pages/dashboard3/components/Settings';
 import Professionals from './pages/professionals'; 
 import ProfessionalProfilePage from './pages/professionalProfile'; 
+import MyAppointments from './pages/dashboard/components/myappointments';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
       { path: "schedule", element: <Schedule /> },
       { path: "supportgroup", element: <SupportGroups /> },
       { path: "groupdetail", element: <GroupDetail /> },
+      {path: "myappointments", element:<MyAppointments /> }
     ]
   },
   {

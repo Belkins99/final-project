@@ -1,5 +1,6 @@
 // src/pages/ProfessionalProfile.jsx
 import React, { useState } from 'react';
+import doctorOne from '../../../assets/images/doctor.jpg'
 
 const ProfessionalProfile = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -41,7 +42,7 @@ const ProfessionalProfile = () => {
       <div className="flex items-center space-x-4">
         <img
           className="w-24 h-24 rounded-full object-cover"
-          src="https://via.placeholder.com/150"
+          src= {doctorOne}
           alt="Profile"
         />
         <div>
