@@ -2,18 +2,26 @@ import React, { useState } from 'react';
 import { GrDashboard, GrResources, GrSchedule } from 'react-icons/gr';
 import { HiSupport } from 'react-icons/hi';
 import { CgProfile } from 'react-icons/cg';
-import { Link } from 'react-router-dom';
-import { FaUserMd, FaCalendarAlt } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { FaUserMd, FaCalendarAlt, FaSignOutAlt } from 'react-icons/fa';
 
 const UserSidebar = () => {
   const [activeLink, setActiveLink] = useState(0);
+  const navigate = useNavigate();
 
   const handleLinkClick = (index) => {
     setActiveLink(index);
   };
 
+  const handleLogout = () => {
+    // Clear any authentication data here if needed
+
+    // Redirect to the homepage
+    navigate('/');
+  };
+
   const SIDEBAR_LINKS = [
-    { id: 1, path: "/user-dashboard", name: "Dashboard", icon: GrDashboard },
+
     { id: 2, path: "/user-dashboard/profile", name: "Profile", icon: CgProfile },
     { id: 3, path: "/user-dashboard/supportgroup", name: "Support Groups", icon: HiSupport },
     { id: 4, path: "/user-dashboard/schedule", name: "Schedule", icon: GrSchedule },
@@ -39,10 +47,18 @@ const UserSidebar = () => {
               </Link>
             </li>
           ))}
+
+          {/* Logout button */}
+          <li className={`font-medium rounded-md py-2 px-5 hover:bg-indigo-600 hover:text-white text-indigo-100`}>
+            <button onClick={handleLogout} className='flex justify-center md:justify-start items-center md:space-x-5'>
+              <FaSignOutAlt />
+              <span className='text-sm hidden md:flex'>Logout</span>
+            </button>
+          </li>
         </ul>
       </nav>
 
-      <div className='w-full absolute bottom-5 left-0 px-4 py-2 cursor-pointer text-center'>
+      <div className='w-full absolute bottom-5 left-0 px-4 py-2 cursor-pointer text-center pt-5'>
         <p className='flex items-center space-x-2 text-xs text-white py-2 px-5 bg-gradient-to-r from-indigo-500 to-indigo-700 rounded-full'>
           <span>?</span> <span className='hidden md:flex'>Need Help</span>
         </p>

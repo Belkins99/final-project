@@ -109,10 +109,10 @@ const Navbar = () => {
           </button>
 
           <button
-            onClick={() => scrollToSection('support-groups')}
+            onClick={() => scrollToSection('professionals')}
             className="mr-6 hover:text-blue-300"
           >
-            Support Groups
+            Professionals
           </button>
 
           <button

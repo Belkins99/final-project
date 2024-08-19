@@ -34,7 +34,7 @@ const RegisterPage = () => {
       toast.success('Registration successful! Redirecting to login...');
       setTimeout(() => {
         navigate('/login');
-      }, 2000); // Redirect after 2 seconds to allow the user to see the success message
+      }, 1000); // Redirect after 2 seconds to allow the user to see the success message
     } catch (error) {
       toast.error(error.message);
     } finally {

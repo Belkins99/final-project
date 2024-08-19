@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
-import { FaUser, FaCalendarAlt, FaUserFriends, FaBook, FaCog } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { FaUser, FaCalendarAlt, FaUserFriends, FaBook, FaCog, FaSignOutAlt } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ProfessionalSidebar = () => {
   const [activeLink, setActiveLink] = useState(0);
+  const navigate = useNavigate();
 
   const handleLinkClick = (index) => {
     setActiveLink(index);
+  };
+
+  const handleLogout = () => {
+    // Clear any authentication data here if needed
+
+    // Redirect to the homepage
+    navigate('/');
   };
 
   const SIDEBAR_LINKS = [
@@ -37,6 +45,14 @@ const ProfessionalSidebar = () => {
               </Link>
             </li>
           ))}
+
+          {/* Logout button */}
+          <li className={`font-medium rounded-md py-2 px-5 hover:bg-indigo-600 hover:text-white text-indigo-100`}>
+            <button onClick={handleLogout} className='flex justify-center md:justify-start items-center md:space-x-5'>
+              <FaSignOutAlt />
+              <span className='text-sm hidden md:flex'>Logout</span>
+            </button>
+          </li>
         </ul>
       </nav>
 

@@ -68,7 +68,7 @@ const HomePage = () => {
       </div>
 
       {/* Meet Our Professionals */}
-      <section className="bg-indigo-200 py-16" data-aos="fade-up">
+      <section id='professionals' className="bg-indigo-200 py-16" data-aos="fade-up">
         <h2 className="text-3xl font-bold text-center mb-10 text-indigo-950">Meet Our Professionals</h2>
         <Professionals />
       </section>
