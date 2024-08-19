@@ -30,7 +30,7 @@ const AdminSidebar = () => {
   ];
 
   return (
-    <div className='w-16 md:w-52 fixed left-0 top-0 z-10 h-screen border-r pt-8 px-4 bg-indigo-700'>
+    <div className='w-16 md:w-52 fixed left-0 top-0 z-10 h-screen border-r pt-8 px-4 bg-indigo-500'>
       <div className='mb-8'>
         <h1 className='hidden md:flex font-bold text-white'>SOLACE</h1>
         <h1 className='flex md:hidden text-white'>logo2</h1>

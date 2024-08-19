@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import doctorOne from '../assets/images/doctor.jpg';
 import doctorTwo from '../assets/images/doctor1.jpg';
 import doctorThree from '../assets/images/doctor2.jpg';
@@ -39,12 +40,15 @@ const professionalsData = [
 const Professionals = () => {
   return (
     <div className="container mx-auto p-6 bg-slate-100">
-      <h1 className="text-3xl font-bold mb-6 text-indigo-800">Our Professionals</h1>
+      <h1 className="text-3xl font-bold mb-6 text-indigo-800 text-center">Our Professionals</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {professionalsData.map((professional) => (
-          <div
+          <motion.div
             key={professional.id}
-            className="bg-white p-6 rounded-lg shadow-lg hover:bg-indigo-50 transition duration-300"
+            className="bg-white p-6 rounded-lg shadow-lg"
+            whileHover={{ scale: 1.05, boxShadow: "0 8px 16px rgba(0,0,0,0.2)" }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.3 }}
           >
             <img
               className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-indigo-800"
@@ -53,14 +57,14 @@ const Professionals = () => {
             />
             <h2 className="text-xl font-semibold text-center mt-4 text-indigo-800">{professional.name}</h2>
             <p className="text-center text-indigo-600">{professional.specialty}</p>
-            <p className="text-center mt-2 text-slate-700">{professional.description}</p>
+            <p className="text-center mt-2 text-slate-700 overflow-hidden max-h-16">{professional.description}</p>
             <Link
               to={`/professional/${professional.id}`}
               className="mt-4 block bg-indigo-700 text-white text-center py-2 rounded-lg hover:bg-indigo-900 transition duration-300"
             >
               View Profile
             </Link>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

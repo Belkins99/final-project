@@ -8,6 +8,49 @@
 }
 
 
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  .fade-in {
+    animation: fadeIn 2s ease-in;
+  }
+
+  /* Fade In Animation */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  /* Slide In Animation */
+  @keyframes slideIn {
+    0% { transform: translateX(-100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  
+  /* Zoom In Animation */
+  @keyframes zoomIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  /* Applying Animations */
+  .fade-in {
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .slide-in {
+    animation: slideIn 2s ease-in-out;
+  }
+  
+  .zoom-in {
+    animation: zoomIn 2s ease-in-out;
+  }
+  
+  
+
+
 
 
 

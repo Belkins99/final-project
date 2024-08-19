@@ -5,10 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/bg-image.jpeg';
 import { useForm } from 'react-hook-form';
 import { login } from '../../services/authService.js';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const {
@@ -19,7 +20,6 @@ const LoginPage = () => {
 
   const handleLogin = async (data) => {
     setLoading(true);
-    setError(null);
     try {
       const res = await login(data.email, data.password);
       console.log('Response Data:', res);
@@ -28,6 +28,8 @@ const LoginPage = () => {
       const role = res.user?.role; // Directly access user.role from response
 
       if (!role) throw new Error("User role is not available");
+
+      toast.success('Login successful! Redirecting...');
 
       // Navigate to the appropriate dashboard based on role
       switch (role) {
@@ -45,14 +47,14 @@ const LoginPage = () => {
       }
     } catch (error) {
       console.error('Login Error:', error);
-      setError(error.message || "An unexpected error occurred");
+      toast.error(error.message || "An unexpected error occurred");
     } finally {
       setLoading(false);
     }
   };
 
   const handleGoogleLogin = () => {
-    console.log('Google login not implemented');
+    toast.info('Google login not implemented');
   };
 
   return (
@@ -60,6 +62,7 @@ const LoginPage = () => {
       className="flex items-center justify-center min-h-screen bg-cover bg-center brightness-75"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
+      <ToastContainer />
       <div className="w-full max-w-md p-8 bg-black bg-opacity-70 shadow-lg rounded-lg">
         <h2 className="text-3xl font-bold mb-6 text-center text-white">Login</h2>
 
@@ -88,7 +91,6 @@ const LoginPage = () => {
             />
             {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
           </div>
-          {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
           <button
             type="submit"
             className="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
